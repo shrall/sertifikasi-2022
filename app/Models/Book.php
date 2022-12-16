@@ -12,11 +12,17 @@ class Book extends Model
     protected $fillable = [
         'name',
         'image',
+        'status_id'
     ];
 
 
     public function histories()
     {
         return $this->hasMany(History::class, 'book_id', 'id');
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(Status::class, 'status_id', 'id');
     }
 }
