@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'detailable_id',
+        'detailable_type',
     ];
 
     /**
@@ -41,4 +43,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function detailable(){
+        return $this->morphTo();
+    }
+
+    public function books() {
+        return $this->hasMany(Book::class, 'user_id', 'id');
+    }
 }
