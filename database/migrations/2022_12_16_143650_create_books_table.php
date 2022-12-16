@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->text('image');
             $table->date('loan_date')->nullable();
             $table->date('return_date')->nullable();
             $table->unsignedBigInteger('user_id')->index()->nullable();
