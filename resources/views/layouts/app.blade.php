@@ -33,6 +33,46 @@
         @yield('content')
     </div>
     <script>
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+    </script>
+    <script>
+        var page = 1;
+        var search = null;
+        $(document).on('click', '.pagination a', function(event) {
+            event.preventDefault();
+            page = $(this).attr('href').split('page=')[1];
+            sort(page);
+        });
+    </script>
+    <script>
+        function searchData() {
+            page = 1;
+            search = $("#search").val();
+            sort(page);
+        }
+    </script>
+    <script>
+        function sort(page) {
+            var hostname = "{{ request()->getHost() }}"
+            var url = ""
+            if (hostname.includes('www')) {
+                url = "https://" + hostname
+            } else {
+                url = "{{ config('app.url') }}"
+            }
+            $.post(url + "/search?page=" + page, {
+                    _token: CSRF_TOKEN,
+                    search: search
+                })
+                .done(function(data) {
+                    $('#book-list').html(data);
+                })
+                .fail(function(error) {
+                    console.log(error);
+                });
+        }
+    </script>
+    <script>
         var navbarMenuBool = false;
 
         function toggleNavbarMenu() {

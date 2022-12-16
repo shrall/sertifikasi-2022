@@ -2,31 +2,30 @@
 
 @section('content')
     <div class="bg-white">
-        <div class="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+        <div class="max-w-2xl mx-auto py-4 px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+            <div class="w-full mb-12">
+                <label for="search" class="sr-only">Search</label>
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <!-- Heroicon name: solid/search -->
+                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                            fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <input id="search" name="search" onkeyup="searchData()"
+                        class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        placeholder="Search here.." type="search">
+                </div>
+            </div>
+
             <h2 class="sr-only">Books</h2>
 
-            <div class="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-                @foreach ($books as $book)
-                    <a href="{{ route('customer.book.show', $book->id) }}" class="group">
-                        <div
-                            class="w-full aspect-w-1 aspect-h-1 bg-gray-200 rounded-lg overflow-hidden xl:aspect-w-7 xl:h-96">
-                            <img src="{{ asset('uploads/' . $book->image) }}"
-                                alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
-                                class="w-full h-full object-center object-cover group-hover:opacity-75">
-                        </div>
-                        <h3 class="mt-4 text-sm text-gray-700">{{ $book->name }}</h3>
-                        <p @class([
-                            'mt-1 text-lg font-medium',
-                            'text-blue-500' => $book->status_id == 1,
-                            'text-red-500' => $book->status_id == 2,
-                        ])>{{ $book->status->name }}</p>
-                    </a>
-                @endforeach
+            <div id="book-list">
+                @include('book')
             </div>
         </div>
-        {{ $books->links() }}
     </div>
-@endsection
-
-@section('scripts')
 @endsection

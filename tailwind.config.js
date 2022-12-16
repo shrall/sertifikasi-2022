@@ -15,14 +15,6 @@ module.exports = {
                     },
                 ],
             },
-            colors: {
-                "tukim-black": "#111111",
-                "tukim-white": "#ffffff",
-                "tukim-pink": "#fd9f8f",
-                "tukim-yellow": "#f9ac25",
-                "tukim-blue": "#5496b8",
-                "tukim-green": "#499599",
-            },
             fontFamily: {
                 poppins: ['"Poppins"'],
             },

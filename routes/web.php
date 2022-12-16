@@ -28,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
+Route::post('/search', [PageController::class, 'search'])->name('search');
 
 Auth::routes();
 
