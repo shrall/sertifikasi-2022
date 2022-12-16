@@ -44,11 +44,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function detailable(){
+    public function detailable()
+    {
         return $this->morphTo();
     }
 
-    public function books() {
-        return $this->hasMany(Book::class, 'user_id', 'id');
+    public function histories()
+    {
+        return $this->hasMany(History::class, 'user_id', 'id');
     }
 }

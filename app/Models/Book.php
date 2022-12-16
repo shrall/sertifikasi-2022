@@ -12,14 +12,11 @@ class Book extends Model
     protected $fillable = [
         'name',
         'image',
-        'loan_date',
-        'return_date',
-        'user_id',
     ];
 
 
-    public function user()
+    public function histories()
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->hasMany(History::class, 'book_id', 'id');
     }
 }
