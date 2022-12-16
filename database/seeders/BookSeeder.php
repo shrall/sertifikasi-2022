@@ -17,32 +17,28 @@ class BookSeeder extends Seeder
     public function run()
     {
         $book = new Book();
-        $book->name = "ABCs for Adults";
+        $book->name = "Almanack of Naval Ravikant";
+        $book->image = "almanack.jpg";
         $book->save();
 
         $book = new Book();
-        $book->name = "1001 Dad Jokes";
-        $book->loan_date = Carbon::now();
-        $book->return_date = Carbon::now()->addDays(7);
-        $book->user_id = 1;
+        $book->name = "Percy Jackson and The Lightning Thief";
+        $book->image = "percy.jpg";
         $book->save();
 
         $book = new Book();
-        $book->name = "Pastry Recipes for Dads";
-        $book->loan_date = Carbon::now();
-        $book->return_date = Carbon::now()->addDays(7);
-        $book->user_id = 1;
+        $book->name = "Harry Potter and The Sorcerer's Stone";
+        $book->image = "harry.jpg";
         $book->save();
 
         $book = new Book();
-        $book->name = "Dance Choreographies";
-        $book->loan_date = Carbon::now();
-        $book->return_date = Carbon::now()->addDays(7);
-        $book->user_id = 2;
+        $book->name = "Asian Food Recipes";
+        $book->image = "recipe.jpg";
         $book->save();
 
         $book = new Book();
-        $book->name = "Elon Musk Biographic Journey";
+        $book->name = "The Big Book of Dad Jokes";
+        $book->image = "dadjoke.jpg";
         $book->save();
     }
 }

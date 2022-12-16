@@ -18,7 +18,7 @@ class Customer
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()) {
-            if (Auth::user()->detailable_type == "App\Models\Customer") {
+            if (Auth::user()->info_type == "App\Models\Customer") {
                 return $next($request);
             } else {
                 return redirect()->route('home');

@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->integer('detailable_id')->unsigned();
-            $table->string('detailable_type');
+            $table->integer('info_id')->unsigned();
+            $table->string('info_type');
             $table->rememberToken();
             $table->timestamps();
         });

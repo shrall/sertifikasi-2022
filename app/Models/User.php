@@ -21,8 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'detailable_id',
-        'detailable_type',
+        'info_id',
+        'info_type',
     ];
 
     /**
@@ -44,7 +44,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function detailable()
+    public function info()
     {
         return $this->morphTo();
     }

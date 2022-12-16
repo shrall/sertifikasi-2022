@@ -18,7 +18,7 @@ class Admin
     public function handle(Request $request, Closure $next)
     {
         if (Auth::check()) {
-            if (Auth::user()->detailable_type == "App\Models\Admin") {
+            if (Auth::user()->info_type == "App\Models\Admin") {
                 return $next($request);
             } else {
                 return redirect()->route('home');
