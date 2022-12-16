@@ -27,7 +27,9 @@
 
 <body>
     <div id="app" class="font-poppins">
-        @include('inc.navbar')
+        @if (Route::current()->getName() != 'login' && Route::current()->getName() != 'register')
+            @include('inc.navbar')
+        @endif
         @yield('content')
     </div>
     <script>

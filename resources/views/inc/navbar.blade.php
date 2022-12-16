@@ -41,20 +41,9 @@
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex space-x-4">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                        <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+                        <a href="{{ route('welcome') }}"
+                            class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
                             aria-current="page">Home</a>
-
-                        @auth
-                            <a href="#"
-                                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Team</a>
-
-                            <a href="#"
-                                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Projects</a>
-
-                            <a href="#"
-                                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendar</a>
-
-                        @endauth
                     </div>
                 </div>
             </div>
@@ -108,11 +97,16 @@
                         role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                         <!-- Active: "bg-gray-100", Not Active: "" -->
                         @auth
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
+                            <a href="#"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
                                 id="user-menu-item-2">Sign out</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         @else
-                            <a href="{{route('login')}}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1"
-                                id="user-menu-item-2">Login</a>
+                            <a href="{{ route('login') }}" class="block px-4 py-2 text-sm text-gray-700" role="menuitem"
+                                tabindex="-1" id="user-menu-item-2">Login</a>
                         @endauth
                     </div>
                 </div>
@@ -124,20 +118,9 @@
     <div class="sm:hidden hidden" id="mobile-menu">
         <div class="px-2 pt-2 pb-3 space-y-1">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
+            <a href="{{ route('welcome') }}"
+                class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
                 aria-current="page">Home</a>
-
-            @auth
-                <a href="#"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Team</a>
-
-                <a href="#"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
-
-                <a href="#"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Calendar</a>
-
-            @endauth
         </div>
     </div>
 </nav>
