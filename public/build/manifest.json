@@ -1,7 +1,7 @@
 {
-  "resources/sass/app.scss": {
+  "resources/css/app.scss": {
     "file": "assets/app-ed7d3518.css",
-    "src": "resources/sass/app.scss",
+    "src": "resources/css/app.scss",
     "isEntry": true
   },
   "resources/js/app.js": {
