@@ -21,10 +21,10 @@ class Admin
             if (Auth::user()->info_type == "App\Models\Admin") {
                 return $next($request);
             } else {
-                return redirect()->route('home');
+                return redirect()->route('login');
             }
         } else {
-            return redirect()->route('home');
+            return redirect()->route('login');
         }
     }
 }

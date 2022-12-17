@@ -16,25 +16,36 @@ class HistorySeeder extends Seeder
      */
     public function run()
     {
-        $histlory = new History();
-        $histlory->loan_date = Carbon::now();
-        $histlory->return_date = Carbon::now()->addDays(7);
-        $histlory->user_id = 3;
-        $histlory->book_id = 2;
-        $histlory->save();
+        $history = new History();
+        $history->loan_date = Carbon::now()->subDays(14);
+        $history->loan_due = Carbon::now()->subDays(7);
+        $history->user_id = 3;
+        $history->book_id = 1;
+        $history->status_id = 1;
+        $history->save();
 
-        $histlory = new History();
-        $histlory->loan_date = Carbon::now()->subDay();
-        $histlory->return_date = Carbon::now()->addDays(6);
-        $histlory->user_id = 3;
-        $histlory->book_id = 3;
-        $histlory->save();
+        $history = new History();
+        $history->loan_date = Carbon::now();
+        $history->loan_due = Carbon::now()->addDays(7);
+        $history->user_id = 3;
+        $history->book_id = 2;
+        $history->status_id = 2;
+        $history->save();
 
-        $histlory = new History();
-        $histlory->loan_date = Carbon::now()->subDays(4);
-        $histlory->return_date = Carbon::now()->addDays(3);
-        $histlory->user_id = 4;
-        $histlory->book_id = 4;
-        $histlory->save();
+        $history = new History();
+        $history->loan_date = Carbon::now()->subDay();
+        $history->loan_due = Carbon::now()->addDays(6);
+        $history->user_id = 3;
+        $history->book_id = 3;
+        $history->status_id = 2;
+        $history->save();
+
+        $history = new History();
+        $history->loan_date = Carbon::now()->subDays(4);
+        $history->loan_due = Carbon::now()->addDays(3);
+        $history->user_id = 4;
+        $history->book_id = 4;
+        $history->status_id = 2;
+        $history->save();
     }
 }

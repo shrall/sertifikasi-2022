@@ -13,17 +13,11 @@ class Book extends Model
         'name',
         'image',
         'description',
-        'status_id'
     ];
 
 
     public function histories()
     {
         return $this->hasMany(History::class, 'book_id', 'id');
-    }
-
-    public function status()
-    {
-        return $this->belongsTo(Status::class, 'status_id', 'id');
     }
 }

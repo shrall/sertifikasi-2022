@@ -41,9 +41,19 @@
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex space-x-4">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                        <a href="{{ route('welcome') }}"
-                            class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
-                            aria-current="page">Home</a>
+                        <a href="{{ route('welcome') }}" @class([
+                            'text-white px-3 py-2 rounded-md text-sm font-medium',
+                            'bg-gray-900' => Route::current()->getName() == 'welcome',
+                        ]) aria-current="page">Home</a>
+                        @auth
+                            @if (Auth::user()->info_type == 'App\Models\Customer')
+                                <a href="{{ route('customer.book.index') }}" @class([
+                                    'text-white px-3 py-2 rounded-md text-sm font-medium',
+                                    'bg-gray-900' => Route::current()->getName() == 'customer.book.index',
+                                ])
+                                    aria-current="page">My Books</a>
+                            @endif
+                        @endauth
                     </div>
                 </div>
             </div>
@@ -72,7 +82,7 @@
                 To: "transform opacity-0 scale-95"
             -->
                     <div id="navbar-menu"
-                        class="hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+                        class="z-50 hidden origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
                         role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                         <!-- Active: "bg-gray-100", Not Active: "" -->
                         @auth

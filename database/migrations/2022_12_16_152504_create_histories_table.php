@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('histories', function (Blueprint $table) {
             $table->id();
             $table->date('loan_date');
-            $table->date('return_date');
+            $table->date('loan_due');
             $table->unsignedBigInteger('user_id')->index();
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('book_id')->index();

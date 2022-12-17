@@ -21,10 +21,10 @@ class Customer
             if (Auth::user()->info_type == "App\Models\Customer") {
                 return $next($request);
             } else {
-                return redirect()->route('home');
+                return redirect()->route('login');
             }
         } else {
-            return redirect()->route('home');
+            return redirect()->route('login');
         }
     }
 }

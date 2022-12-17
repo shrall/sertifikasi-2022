@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\History;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
@@ -14,7 +17,11 @@ class BookController extends Controller
      */
     public function index()
     {
-        //
+        $histories = History::where('user_id', Auth::id())
+            ->orderBy('loan_due', 'desc')
+            ->get();
+
+        return view('customer.book.index', compact('histories'));
     }
 
     /**
@@ -35,7 +42,15 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $history = History::create([
+            "loan_date" => Carbon::now(),
+            "loan_due" => Carbon::now()->addDays(7),
+            "user_id" => Auth::id(),
+            "book_id" => $request->book_id,
+            "status_id" => 2
+        ]);
+
+        return redirect()->route('customer.book.index');
     }
 
     /**
@@ -46,7 +61,7 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        return view('customer.book.show', compact('book'));
     }
 
     /**
