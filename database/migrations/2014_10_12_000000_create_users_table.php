@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('password');
             $table->integer('info_id')->unsigned();
             $table->string('info_type');
-            $table->rememberToken();
             $table->timestamps();
         });
     }

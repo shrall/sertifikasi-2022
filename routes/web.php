@@ -32,22 +32,11 @@ Route::post('/search', [PageController::class, 'search'])->name('search');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::group(['middleware' => ['customer'], 'prefix' => 'customer', 'as' => 'customer.'], function () {
-    Route::resource('admin', AdminController::class);
     Route::resource('book', BookController::class);
-    Route::resource('customer', CustomerController::class);
-    Route::resource('history', HistoryController::class);
-    Route::resource('position', PositionController::class);
-    Route::resource('user', UserController::class);
 });
 
 Route::group(['middleware' => ['admin'], 'prefix' => 'admin', 'as' => 'admin.'], function () {
-    Route::resource('admin', AdminAdminController::class);
     Route::resource('book', AdminBookController::class);
-    Route::resource('customer', AdminCustomerController::class);
     Route::resource('history', AdminHistoryController::class);
-    Route::resource('position', AdminPositionController::class);
-    Route::resource('user', AdminUserController::class);
 });
