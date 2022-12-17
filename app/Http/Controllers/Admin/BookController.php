@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Book;
+use App\Models\History;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
@@ -36,7 +37,13 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $history = History::find($request->history_id);
+
+        $history->update([
+            "status_id" => 1
+        ]);
+
+        return redirect()->route('admin.book.show', $history->book_id);
     }
 
     /**
@@ -47,7 +54,10 @@ class BookController extends Controller
      */
     public function show(Book $book)
     {
-        //
+        $histories = History::where('book_id', $book->id)
+            ->orderBy('loan_due', 'desc')
+            ->get();
+        return view('admin.book.show', compact('book', 'histories'));
     }
 
     /**

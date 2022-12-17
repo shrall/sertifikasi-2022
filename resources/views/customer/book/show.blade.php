@@ -42,7 +42,7 @@
                     <p class="text-gray-500 mt-6">{{ $book->description }}</p>
 
                     <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-4">
-                        <button onclick="toggleLoanModal();" type="button" @disabled($book->histories->where('loan_due', '>', \Carbon\Carbon::now())->first())
+                        <button onclick="toggleLoanModal();" type="button" @disabled($book->histories->where('status_id', 2)->count() > 0)
                             class="disabled:opacity-60 w-full bg-indigo-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500">
                             Loan</button>
                     </div>
