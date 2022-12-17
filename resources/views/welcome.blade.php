@@ -23,17 +23,9 @@
 
             <h2 class="sr-only">Books</h2>
 
-            @if ($books->count() == 0)
-                <!-- This example requires Tailwind CSS v2.0+ -->
-                <div class="text-center">
-                    <span class="fa-regular fa-fw fa-book text-7xl text-gray-300"></span>
-                    <h3 class="mt-2 text-sm font-medium text-gray-900">No books are available.</h3>
-                </div>
-            @else
-                <div id="book-list">
-                    @include('book')
-                </div>
-            @endif
+            <div id="book-list">
+                @include('book')
+            </div>
         </div>
     </div>
 @endsection
