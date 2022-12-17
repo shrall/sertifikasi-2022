@@ -71,7 +71,7 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-        //
+        return view('admin.book.edit', compact('book'));
     }
 
     /**
@@ -83,7 +83,20 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        if ($request->image) {
+            $image = 'book-' . time() . '-' . $request->image->getClientOriginalName();
+            $request->image->move(public_path('uploads'), $image);
+        } else {
+            $image = $book->image;
+        }
+
+        $book->update([
+            'name' => $request->name,
+            'image' => $image,
+            'description' => $request->description
+        ]);
+
+        return redirect()->route('admin.book.show', $book->id);
     }
 
     /**

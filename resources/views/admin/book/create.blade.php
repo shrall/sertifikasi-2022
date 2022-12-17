@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <form method="POST" action="{{ route('admin.book.store') }}" class="space-y-8 px-8 md:px-32 py-4" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('admin.book.store') }}" class="space-y-8 px-8 md:px-32 py-4"
+        enctype="multipart/form-data">
         @csrf
         <div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
             <div>
@@ -28,7 +29,7 @@
                             Description
                         </label>
                         <div class="mt-1 sm:mt-0 sm:col-span-2">
-                            <textarea id="description" name="description" rows="3"
+                            <textarea id="description" name="description" rows="3" required
                                 class="max-w-lg shadow-sm block w-full focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md"></textarea>
                         </div>
                     </div>
@@ -39,7 +40,7 @@
                         <div class="flex text-sm text-gray-600">
                             <label for="image"
                                 class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500">
-                                <input id="image" name="image" type="file" accept="image/png, image/jpeg">
+                                <input id="image" name="image" type="file" accept="image/png, image/jpeg" required>
                             </label>
                         </div>
                     </div>
