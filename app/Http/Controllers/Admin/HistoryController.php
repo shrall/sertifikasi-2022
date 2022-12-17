@@ -36,7 +36,13 @@ class HistoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $history = History::find($request->history_id);
+
+        $history->update([
+            "status_id" => 1
+        ]);
+
+        return redirect()->route('admin.book.show', $history->book_id);
     }
 
     /**

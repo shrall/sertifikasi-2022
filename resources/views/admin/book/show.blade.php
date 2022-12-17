@@ -71,7 +71,7 @@
     <!-- This example requires Tailwind CSS v2.0+ -->
     <div id="return-modal" class="hidden fixed z-10 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog"
         aria-modal="true">
-        <form action="{{ route('admin.book.store') }}" method="post">
+        <form action="{{ route('admin.history.store') }}" method="post">
             @csrf
             <input type="hidden" id="history-id" name="history_id">
             <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">

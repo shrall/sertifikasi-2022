@@ -26,7 +26,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.book.create');
     }
 
     /**
@@ -37,13 +37,16 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        $history = History::find($request->history_id);
+        $image = 'book-' . time() . '-' . $request->image->getClientOriginalName();
+        $request->image->move(public_path('uploads'), $image);
 
-        $history->update([
-            "status_id" => 1
+        $book = Book::create([
+            'name' => $request->name,
+            'image' => $image,
+            'description' => $request->description
         ]);
 
-        return redirect()->route('admin.book.show', $history->book_id);
+        return redirect()->route('admin.book.show', $book->id);
     }
 
     /**

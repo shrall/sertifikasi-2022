@@ -58,6 +58,23 @@
                 </div>
             </div>
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                <div class="flex-shrink-0 mr-4">
+                    @auth
+                        @if (Auth::user()->info_type == 'App\Models\Admin')
+                            <a href="{{ route('admin.book.create') }}"
+                                class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-500 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500">
+                                <!-- Heroicon name: solid/plus-sm -->
+                                <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                    fill="currentColor" aria-hidden="true">
+                                    <path fill-rule="evenodd"
+                                        d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                                <span>New Book</span>
+                            </a>
+                        @endif
+                    @endauth
+                </div>
                 <!-- Profile dropdown -->
                 <div class="ml-3 relative">
                     <div>
